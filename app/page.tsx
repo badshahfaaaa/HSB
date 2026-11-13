@@ -7,6 +7,7 @@ import { Intro } from "@/components/Intro";
 import { Band, Clock, PageMotion, Sky } from "@/components/Live";
 import { Planner } from "@/components/Planner";
 import { Team } from "@/components/Team";
+import { Trust } from "@/components/Trust";
 import { ArtPicture, Btn, SplitHeading, SplitWords } from "@/components/ui";
 import { HERO_PHOTOS } from "@/lib/hero";
 import { MAPS_DIRECTIONS, MAPS_LISTING, PHONE_DISPLAY, PHONE_TEL, WA, waText } from "@/lib/site";
@@ -16,31 +17,31 @@ const img = (name: string) => `/assets/img/${name}.webp`;
 const JOBS = [
   {
     title: "Buying a plot",
-    text: "Tell us the size and the block. We shortlist what is really for sale, walk each plot with you and go through the file before any money moves.",
+    text: "Tell us the size and the block. We find plots that are genuinely for sale, walk each one with you, and check all papers before any money is paid.",
     src: "blossom-1920", w: 1920, h: 1280,
     alt: "Spring blossom in front of a forested Margalla hillside",
   },
   {
     title: "Selling what you own",
-    text: "We price it against what is moving in B-17 now, show it to people who are ready to buy, and stay with you until the transfer is done.",
+    text: "We price your plot against recent sales in B-17, show it to serious buyers, and stay with you through the whole transfer at the society office.",
     src: "aerial-1920", w: 1920, h: 1080,
     alt: "Islamabad seen from Pir Sohawa, the city running out to a hazy horizon",
   },
   {
     title: "Drawing the house",
-    text: "The plan comes before the brick. We work out rooms, light and parking for your plot, so you can see the house and change your mind while it is still cheap.",
+    text: "We draw rooms, windows and parking for your plot before any brick is laid. You can see the house on paper and make changes while it costs nothing.",
     src: "house-design", w: 1200, h: 913,
     alt: "A hand-drawn front elevation and floor plans for a house, from 1883",
   },
   {
     title: "Building it",
-    text: "Foundation, grey structure and services with one team on site and one person for you to call, from the first trench to the last slab.",
+    text: "Foundation, grey structure and roof, all done by one team on site. You get one person to call from the first trench to the last slab.",
     src: "bricklayer", w: 943, h: 641,
     alt: "A bricklayer bent over a wall, resetting bricks by hand",
   },
   {
     title: "Finishing the inside",
-    text: "Floors, kitchens, woodwork, paint and lighting, chosen with you and fitted by the same people who built the walls behind them.",
+    text: "Floors, kitchens, doors, paint and lighting, all chosen with you and fitted by the same team that built the walls.",
     src: "interior", w: 1024, h: 694,
     alt: "A bright living room with pale sofas, a low table and tall windows",
   },
@@ -140,6 +141,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Trust />
 
         <section className="ground" id="ground">
           <div className="wrap">

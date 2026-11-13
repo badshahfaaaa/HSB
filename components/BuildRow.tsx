@@ -5,14 +5,14 @@ import { prefersReducedMotion } from "@/lib/site";
 import { SplitHeading } from "./ui";
 
 const STAGES = [
-  { t: "You call us", p: "Any hour. Tell us the block, the size, and whether you are buying, selling or building.", space: 110, sm: 44 },
-  { t: "We walk the plot", p: "We meet you there and peg out the corners, so you can stand on the land before you decide.", space: 44, sm: 20 },
-  { t: "The file is checked", p: "Ownership, dues and society papers, gone through line by line before any money moves.", space: 140, sm: 56 },
-  { t: "Drawings first", p: "Rooms, light, parking and the front of the house, agreed on paper while changes cost nothing.", space: 72, sm: 30 },
-  { t: "The foundation", p: "Excavation, footings and plinth. Most of what holds the house up goes in here, out of sight.", space: 120, sm: 48 },
-  { t: "The grey structure", p: "Columns, slabs and brick. You can walk your own rooms now, and you will want to.", space: 56, sm: 24 },
-  { t: "Finishing", p: "Plaster, floors, doors, windows and kitchen. The building turns into a house.", space: 132, sm: 52 },
-  { t: "The keys", p: "A last walk through together, a snag list cleared, and the keys are yours.", space: 64, sm: 28 },
+  { t: "You call us", p: "Call any time, day or night. Tell us the block, the size, and whether you want to buy, sell or build.", space: 110, sm: 44 },
+  { t: "We walk the plot", p: "We meet you at the plot and mark out the corners, so you can stand on the land before you decide.", space: 44, sm: 20 },
+  { t: "The file is checked", p: "We check ownership, dues and society papers line by line, so you know the plot is clean before any money is paid.", space: 140, sm: 56 },
+  { t: "Drawings first", p: "Rooms, windows, parking and the front of the house, all drawn on paper while changes are still free.", space: 72, sm: 30 },
+  { t: "The foundation", p: "Digging, footings and the base. Most of what holds the house up goes in here, out of sight.", space: 120, sm: 48 },
+  { t: "The grey structure", p: "Columns, slabs and brick walls go up. You can walk through your own rooms at this stage.", space: 56, sm: 24 },
+  { t: "Finishing", p: "Plaster, floors, doors, windows and kitchen. The bare walls turn into a home.", space: 132, sm: 52 },
+  { t: "The keys", p: "A final walk-through together, any remaining issues fixed, and the keys are yours.", space: 64, sm: 28 },
 ];
 
 // A day passes along the row: dawn at the first call, night with the lights on at the keys.
