@@ -31,13 +31,13 @@ export const HERO_PHOTOS: HeroPhoto[] = [
   },
   {
     place: "Faisal Hills",
-    alt: "Lights along the cornice at the top of the Faisal Hills arch",
+    alt: "The upper cornice of the Faisal Hills arch monument, lit gold against the night sky",
     wide: img("faisal-hills-cornice-wide", 2000, 1250),
     tall: img("faisal-hills-cornice-tall", 1200, 2000),
   },
   {
     place: "Faisal Hills",
-    alt: "The carved, lit vault inside the opening of the Faisal Hills arch",
+    alt: "The lit archway of the Faisal Hills monument, cropped from the full arch",
     wide: img("faisal-hills-vault-wide", 2000, 1250),
     tall: img("faisal-hills-vault-tall", 1200, 2000),
   },

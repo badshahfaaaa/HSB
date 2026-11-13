@@ -83,7 +83,7 @@ const SHEET: { name: string; items: [string, string, string][] }[] = [
 ];
 
 const CREDITS: [string, string, string][] = [
-  ["https://commons.wikimedia.org/w/index.php?curid=158965533", "Faisal Hills Arc Monument", "by JogiAsad, CC BY-SA 4.0, cropped."],
+  ["https://commons.wikimedia.org/w/index.php?curid=158965533", "Faisal Hills Arc Monument", "by JogiAsad, CC BY-SA 4.0, cropped and section-cropped for the cornice and vault views."],
   ["https://commons.wikimedia.org/w/index.php?curid=40752875", "Margalla Hills, Morning", "by Usamamaqbool, CC BY-SA 3.0, cropped."],
   ["https://commons.wikimedia.org/w/index.php?curid=48520383", "View From Faisal Mosque", "by Javaidsohaib, CC BY-SA 4.0."],
   ["https://commons.wikimedia.org/w/index.php?curid=59286903", "Aerial View from Pir Sohawa", "by Saqibimtiaz, CC BY-SA 4.0, cropped."],
