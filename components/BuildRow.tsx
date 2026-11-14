@@ -5,14 +5,70 @@ import { prefersReducedMotion } from "@/lib/site";
 import { SplitHeading } from "./ui";
 
 const STAGES = [
-  { t: "You call us", p: "Call any time, day or night. Tell us the block, the size, and whether you want to buy, sell or build.", space: 110, sm: 44 },
-  { t: "We walk the plot", p: "We meet you at the plot and mark out the corners, so you can stand on the land before you decide.", space: 44, sm: 20 },
-  { t: "The file is checked", p: "We check ownership, dues and society papers line by line, so you know the plot is clean before any money is paid.", space: 140, sm: 56 },
-  { t: "Drawings first", p: "Rooms, windows, parking and the front of the house, all drawn on paper while changes are still free.", space: 72, sm: 30 },
-  { t: "The foundation", p: "Digging, footings and the base. Most of what holds the house up goes in here, out of sight.", space: 120, sm: 48 },
-  { t: "The grey structure", p: "Columns, slabs and brick walls go up. You can walk through your own rooms at this stage.", space: 56, sm: 24 },
-  { t: "Finishing", p: "Plaster, floors, doors, windows and kitchen. The bare walls turn into a home.", space: 132, sm: 52 },
-  { t: "The keys", p: "A final walk-through together, any remaining issues fixed, and the keys are yours.", space: 64, sm: 28 },
+  {
+    t: "You call us",
+    p: "Call any time, day or night. Tell us the block, the size, and whether you want to buy, sell or build.",
+    space: 110,
+    sm: 44,
+    image: "https://images.pexels.com/photos/7937756/pexels-photo-7937756.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Architect reviewing construction plans outside a modern building",
+  },
+  {
+    t: "We walk the plot",
+    p: "We meet you at the plot and mark out the corners, so you can stand on the land before you decide.",
+    space: 44,
+    sm: 20,
+    image: "https://images.pexels.com/photos/7937747/pexels-photo-7937747.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Real estate professionals inspecting a property with plans",
+  },
+  {
+    t: "The file is checked",
+    p: "We check ownership, dues and society papers line by line, so you know the plot is clean before any money is paid.",
+    space: 140,
+    sm: 56,
+    image: "https://images.pexels.com/photos/7641913/pexels-photo-7641913.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Two people examining architectural blueprints together",
+  },
+  {
+    t: "Drawings first",
+    p: "Rooms, windows, parking and the front of the house, all drawn on paper while changes are still free.",
+    space: 72,
+    sm: 30,
+    image: "https://images.pexels.com/photos/7937269/pexels-photo-7937269.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Architect reviewing a house plan outdoors",
+  },
+  {
+    t: "The foundation",
+    p: "Digging, footings and the base. Most of what holds the house up goes in here, out of sight.",
+    space: 120,
+    sm: 48,
+    image: "https://images.pexels.com/photos/7937752/pexels-photo-7937752.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Architect wearing a hard hat reviewing plans at a construction site",
+  },
+  {
+    t: "The grey structure",
+    p: "Columns, slabs and brick walls go up. You can walk through your own rooms at this stage.",
+    space: 56,
+    sm: 24,
+    image: "https://images.pexels.com/photos/7937758/pexels-photo-7937758.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Architect inspecting a modern house under construction",
+  },
+  {
+    t: "Finishing",
+    p: "Plaster, floors, doors, windows and kitchen. The bare walls turn into a home.",
+    space: 132,
+    sm: 52,
+    image: "https://images.pexels.com/photos/7937742/pexels-photo-7937742.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Architects reviewing the exterior design of a new house",
+  },
+  {
+    t: "The keys",
+    p: "A final walk-through together, any remaining issues fixed, and the keys are yours.",
+    space: 64,
+    sm: 28,
+    image: "https://images.pexels.com/photos/7937691/pexels-photo-7937691.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    alt: "Real estate agent handing a house key to a client",
+  },
 ];
 
 // A day passes along the row: dawn at the first call, night with the lights on at the keys.
@@ -231,7 +287,10 @@ export function BuildRow() {
             <h3>{st.t}</h3>
             <p>{st.p}</p>
             <div className="stage__space" />
-            <div className="stage__draw"><StageDrawing i={i} /></div>
+            <div className="stage__draw">
+              <img className="stage__photo" src={st.image} alt={st.alt} loading="lazy" />
+              <div className="stage__illustration"><StageDrawing i={i} /></div>
+            </div>
           </li>
         ))}
       </ol>
