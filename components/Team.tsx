@@ -18,6 +18,7 @@ export function Team() {
   return (
     <section className="team" id="team">
       <div className="wrap">
+        <span className="eyebrow" data-rise="">Our People</span>
         <SplitHeading text="Meet the team" />
         <ul className="team__grid">
           {TEAM.map((m, i) => (

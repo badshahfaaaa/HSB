@@ -146,6 +146,7 @@ export default function Home() {
 
         <section className="ground" id="ground">
           <div className="wrap">
+            <span className="eyebrow" data-rise="">About Us</span>
             <SplitHeading text="Our ground is B-17" />
             <p className="lead ground__lead" data-rise="">
               HSB Associates &amp; Builders works from plots 1082-F and 1082-G on road MR-11, in Block C of Multi Gardens. We advise on property here, and we build on it.
@@ -186,6 +187,7 @@ export default function Home() {
 
         <section className="jobs" id="jobs">
           <div className="wrap">
+            <span className="eyebrow" data-rise="">What We Do</span>
             <SplitHeading className="head jobs__head" text="One office, five jobs" />
             {JOBS.map((job) => (
               <article className="job" key={job.title}>
@@ -221,6 +223,7 @@ export default function Home() {
             <Image src={img("blossom-1920")} width={1920} height={1280} quality={80} sizes="100vw" alt="" />
           </div>
           <div className="stamp">
+            <span className="eyebrow" style={{ display: "block", textAlign: "center", justifyContent: "center" }} data-rise="">Full Services</span>
             <h2 className="stamp__title">The full sheet</h2>
             <p className="stamp__note">Everything we handle, in and around B-17 Multi Gardens.</p>
             {SHEET.map((group) => (
@@ -256,6 +259,7 @@ export default function Home() {
             />
           </div>
           <div className="card">
+            <span className="eyebrow" data-rise="">Visit Us</span>
             <h2>Come and see us</h2>
             <address>
               Plot 1082-F &amp; 1082-G, MR-11

@@ -211,7 +211,10 @@ export function BuildRow() {
   return (
     <>
       <div className="wrap build__top">
-        <SplitHeading text="From call to keys" />
+        <div>
+          <span className="eyebrow" data-rise="">The Process</span>
+          <SplitHeading text="From call to keys" />
+        </div>
         <div className="build__arrows">
           <button type="button" aria-label="Previous stage" onClick={() => stepBy(-1)}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" /></svg>

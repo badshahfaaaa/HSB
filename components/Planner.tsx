@@ -206,6 +206,7 @@ export function Planner() {
     <>
       <div className="wrap plan__grid">
         <div className="plan__intro">
+          <span className="eyebrow" data-rise="" style={{ color: "var(--accent-light)" }}>Plan Your Plot</span>
           <SplitHeading text="Size up your plot" />
           <p className="lead" data-rise="">
             Pick a size. The plot redraws to scale, with a first sketch of the house that could stand on it.

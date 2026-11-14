@@ -1,13 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, EB_Garamond } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 
-const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas", display: "swap" });
-const garamond = EB_Garamond({
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+const sora = Sora({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-garamond",
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -28,13 +33,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0a0a0a",
+  themeColor: "#0e1410",
 };
 
-/*
-  Runs before first paint so nothing flashes. Hidden states only exist under these classes, so with
-  scripts off the page is simply all there. If the app bundle never starts, the timer lets go after 7s.
-*/
 const bootScript = `(function(){var h=document.documentElement,c=h.classList;c.add('js');
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;c.add('motion');
 if(location.search.indexOf('nointro')>-1){c.add('hero-in');return;}
@@ -59,7 +60,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${bebas.variable} ${garamond.variable}`} suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className={`${sora.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
