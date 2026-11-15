@@ -282,14 +282,13 @@ export function BuildRow() {
       </div>
       <div className="wrap"><div className="meter"><i ref={meter} /></div></div>
       <ol className="row" ref={row} tabIndex={0} onKeyDown={onKey} aria-label="The stages from your first call to the keys">
-        {STAGES.map((st, i) => (
+        {STAGES.map((st) => (
           <li className="stage" key={st.t} style={{ "--space": `${st.space}px`, "--space-sm": `${st.sm}px` } as CSSProperties}>
             <h3>{st.t}</h3>
             <p>{st.p}</p>
             <div className="stage__space" />
             <div className="stage__draw">
               <img className="stage__photo" src={st.image} alt={st.alt} loading="lazy" />
-              <div className="stage__illustration"><StageDrawing i={i} /></div>
             </div>
           </li>
         ))}
