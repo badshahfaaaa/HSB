@@ -8,6 +8,8 @@ import { Band, Clock, PageMotion, Sky } from "@/components/Live";
 import { Planner } from "@/components/Planner";
 import { Team } from "@/components/Team";
 import { Trust } from "@/components/Trust";
+import { Areas } from "@/components/Areas";
+import { Services } from "@/components/Services";
 import { ArtPicture, Btn, SplitHeading, SplitWords } from "@/components/ui";
 import { HERO_PHOTOS } from "@/lib/hero";
 import { MAPS_DIRECTIONS, MAPS_LISTING, PHONE_DISPLAY, PHONE_TEL, WA, waText } from "@/lib/site";
@@ -143,6 +145,12 @@ export default function Home() {
         </section>
 
         <Trust />
+
+        <section className="services-section" id="services">
+          <Services />
+        </section>
+
+        <Areas />
 
         <section className="ground" id="ground">
           <div className="wrap">
