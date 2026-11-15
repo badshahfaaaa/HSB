@@ -76,11 +76,11 @@ export function Services() {
   return (
     <section className="services" id="services">
       <div className="wrap">
-        <span className="eyebrow" data-rise="">Our Services</span>
-        <h2 className="head services__head" data-rise="">
-          Real estate and construction,<br />all under one roof
+        <span className="eyebrow">Our Services</span>
+        <h2 className="head services__head">
+          Real estate and construction, all under one roof
         </h2>
-        <p className="lead services__lead" data-rise="">
+        <p className="lead services__lead">
           From buying your first plot to building a house and selling commercial property — HSB Associates &amp; Builders handles it all.
         </p>
         <div className="services__grid">

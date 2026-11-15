@@ -146,9 +146,7 @@ export default function Home() {
 
         <Trust />
 
-        <section className="services-section" id="services">
-          <Services />
-        </section>
+        <Services />
 
         <Areas />
 
