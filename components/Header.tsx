@@ -28,20 +28,15 @@ export function Header() {
   const [shown, setShown] = useState(false); // the clip-path has been opened
 
   useEffect(() => {
-    let last = scrollY, queued = false;
+    let queued = false;
     const onScroll = () => {
       queued = false;
       const top = topRef.current, hero = document.getElementById("hero");
       if (!top || !hero) return;
-      const y = scrollY, dy = y - last;
+      const y = scrollY;
       top.classList.toggle("is-solid", y > hero.offsetHeight - 70);
-      if (!openRef.current) {
-        if (dy > 4 && y > 240) top.classList.add("is-hidden");
-        else if (dy < -4 || y < 240) top.classList.remove("is-hidden");
-      }
       const max = document.documentElement.scrollHeight - innerHeight;
       if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-      last = y;
     };
     const handler = () => {
       if (!queued) {
@@ -59,7 +54,7 @@ export function Header() {
     document.body.classList.toggle("menu-open", open);
     document.body.classList.toggle("locked", open);
     if (open) {
-      topRef.current?.classList.remove("is-hidden");
+      topRef.current?.classList.remove("is-solid");
       setMounted(true);
       const f = requestAnimationFrame(() => requestAnimationFrame(() => setShown(true)));
       const onKey = (e: KeyboardEvent) => {
