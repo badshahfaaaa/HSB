@@ -15,6 +15,8 @@ export function RequirementForm({ variant }: RequirementFormProps) {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [whatsappUrl, setWhatsappUrl] = useState('')
+
   const compact = variant === 'hero'
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -55,8 +57,8 @@ export function RequirementForm({ variant }: RequirementFormProps) {
       'Please contact me regarding my requirement.',
     ].join('\n')
 
-    // Open a blank tab immediately to avoid popup blocking.
-    const whatsappTab = window.open('about:blank', '_blank')
+    const generatedWhatsappUrl =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 
     try {
       const response = await fetch('/api/requirements', {
@@ -70,24 +72,19 @@ export function RequirementForm({ variant }: RequirementFormProps) {
       const result = await response.json() as { message?: string }
 
       if (!response.ok) {
-        if (whatsappTab) whatsappTab.close()
-        setError(result.message || 'Could not save your requirement. Please try again.')
+        setError(
+          result.message || 'Could not save your requirement. Please try again.'
+        )
         return
       }
 
-      const whatsappUrl =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
-
-      if (whatsappTab) {
-        whatsappTab.location.href = whatsappUrl
-      } else {
-        window.location.href = whatsappUrl
-      }
-
+      setWhatsappUrl(generatedWhatsappUrl)
       setSubmitted(true)
       form.reset()
+
+      // Open WhatsApp after the database confirms the enquiry was saved.
+      window.location.assign(generatedWhatsappUrl)
     } catch {
-      if (whatsappTab) whatsappTab.close()
       setError('Something went wrong. Please try again.')
     } finally {
       setSubmitting(false)
@@ -98,7 +95,7 @@ export function RequirementForm({ variant }: RequirementFormProps) {
     <div className={`requirement-card requirement-card--${variant}`}>
       <div className="requirement-card__heading">
         <span className="eyebrow">
-          <span className="eyebrow__dot" /> LET’S GET STARTED
+          <span className="eyebrow__dot" /> LET'S GET STARTED
         </span>
 
         <h2>
@@ -109,7 +106,7 @@ export function RequirementForm({ variant }: RequirementFormProps) {
           )}
         </h2>
 
-        {compact && <p>Tell us what you’re looking for.</p>}
+        {compact && <p>Tell us what you're looking for.</p>}
       </div>
 
       {submitted ? (
@@ -117,24 +114,32 @@ export function RequirementForm({ variant }: RequirementFormProps) {
           <span className="form-confirmation__icon">
             <Check aria-hidden="true" />
           </span>
+
           <h3>Thank you for sharing!</h3>
+
           <p>
             Your requirement has been saved successfully.
             WhatsApp is ready with your enquiry message.
             Please press Send in WhatsApp to contact HSB.
           </p>
+
           <a
             className="text-link"
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            href={whatsappUrl || `https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <MessageCircle aria-hidden="true" /> Open WhatsApp
           </a>
+
           <button
             className="text-link requirement-form__again"
             type="button"
-            onClick={() => setSubmitted(false)}
+            onClick={() => {
+              setSubmitted(false)
+              setWhatsappUrl('')
+              setError('')
+            }}
           >
             Send another requirement <ArrowRight aria-hidden="true" />
           </button>
@@ -144,18 +149,36 @@ export function RequirementForm({ variant }: RequirementFormProps) {
           <div className="form-row">
             <label className="form-field">
               <span>Your name</span>
-              <input name="fullName" autoComplete="name" placeholder="Full name" maxLength={120} required />
+              <input
+                name="fullName"
+                autoComplete="name"
+                placeholder="Full name"
+                maxLength={120}
+                required
+              />
             </label>
+
             <label className="form-field">
               <span>Email address</span>
-              <input name="email" type="email" autoComplete="email" placeholder="you@example.com" maxLength={254} required />
+              <input
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="you@example.com"
+                maxLength={254}
+                required
+              />
             </label>
           </div>
 
           <label className="form-field">
-            <span>{compact ? 'I’m interested in' : 'What are you interested in?'}</span>
+            <span>
+              {compact ? "I'm interested in" : 'What are you interested in?'}
+            </span>
+
             <select name="interest" defaultValue="" required>
               <option value="" disabled>Select a requirement</option>
+
               {requirementTypes.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -167,33 +190,61 @@ export function RequirementForm({ variant }: RequirementFormProps) {
           <div className="form-row">
             <label className="form-field">
               <span>Preferred area</span>
-              <input name="preferredLocation" autoComplete="address-level2" placeholder="e.g. B-17, Islamabad" maxLength={160} required />
+              <input
+                name="preferredLocation"
+                autoComplete="address-level2"
+                placeholder="e.g. B-17, Islamabad"
+                maxLength={160}
+                required
+              />
             </label>
+
             <label className="form-field">
               <span>Phone number <small>(optional)</small></span>
-              <input name="phone" type="tel" autoComplete="tel" placeholder="Your contact number" maxLength={40} />
+              <input
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="Your contact number"
+                maxLength={40}
+              />
             </label>
           </div>
 
           <label className="form-field">
             <span>Budget range <small>(optional)</small></span>
-            <input name="budgetRange" placeholder="Your preferred range" maxLength={120} />
+            <input
+              name="budgetRange"
+              placeholder="Your preferred range"
+              maxLength={120}
+            />
           </label>
 
           {!compact && (
             <label className="form-field">
               <span>Anything else? <small>(optional)</small></span>
-              <textarea name="details" placeholder="Share any other details about your plans" maxLength={2000} rows={3} />
+              <textarea
+                name="details"
+                placeholder="Share any other details about your plans"
+                maxLength={2000}
+                rows={3}
+              />
             </label>
           )}
 
           <label className="form-honeypot" aria-hidden="true">
             Website
-            <input name="companyWebsite" tabIndex={-1} autoComplete="off" />
+            <input
+              name="companyWebsite"
+              tabIndex={-1}
+              autoComplete="off"
+            />
           </label>
 
           {error && (
-            <p className="requirement-form__error" role="alert">{error}</p>
+            <p className="requirement-form__error" role="alert">
+              {error}
+            </p>
           )}
 
           <button
@@ -206,6 +257,7 @@ export function RequirementForm({ variant }: RequirementFormProps) {
               : compact
                 ? 'Save & Continue to WhatsApp'
                 : 'Save & Send via WhatsApp'}
+
             {!submitting && (
               compact
                 ? <ArrowRight aria-hidden="true" />
@@ -214,7 +266,8 @@ export function RequirementForm({ variant }: RequirementFormProps) {
           </button>
 
           <p className="requirement-form__privacy">
-            Your enquiry is saved securely and shared with HSB through WhatsApp when you send your message.
+            Your enquiry is saved securely and shared with HSB through
+            WhatsApp when you send your message.
           </p>
         </form>
       )}
