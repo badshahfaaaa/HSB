@@ -821,3 +821,294 @@ button, a { -webkit-tap-highlight-color: transparent; }
     padding: 14px;
   }
 }
+
+
+/* =========================================
+   HSB PREMIUM MOTION & INTERACTION SYSTEM
+========================================= */
+
+:root {
+  --hsb-gold: #c4a875;
+  --hsb-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Smooth interactions */
+.hsb-site a,
+.hsb-site button,
+.hsb-site .team-member,
+.hsb-site .service-card,
+.hsb-site .slip {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hsb-site a:focus-visible,
+.hsb-site button:focus-visible,
+.hsb-site summary:focus-visible {
+  outline: 2px solid var(--hsb-gold);
+  outline-offset: 4px;
+}
+
+/* Hero entrance animations */
+.hero__copy {
+  animation: hsb-hero-enter 1s var(--hsb-ease) both;
+}
+
+.hero__copy > * {
+  animation: hsb-hero-enter .85s var(--hsb-ease) both;
+}
+
+.hero__copy > *:nth-child(2) { animation-delay: .08s; }
+.hero__copy > *:nth-child(3) { animation-delay: .16s; }
+.hero__copy > *:nth-child(4) { animation-delay: .24s; }
+
+@keyframes hsb-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium button effects */
+.hsb-site .button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform .35s var(--hsb-ease),
+    box-shadow .35s ease,
+    background .3s ease;
+}
+
+.hsb-site .button::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255,255,255,.24) 50%,
+    transparent 75%
+  );
+  content: "";
+  transform: translateX(-120%);
+  transition: transform .65s ease;
+}
+
+.hsb-site .button:hover::after {
+  transform: translateX(120%);
+}
+
+.hsb-site .button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.13);
+}
+
+.hsb-site .button:active {
+  transform: translateY(-1px) scale(.98);
+}
+
+/* Navigation underline animation */
+.desktop-nav a {
+  position: relative;
+  padding-block: 8px;
+}
+
+.desktop-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--hsb-gold);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .35s var(--hsb-ease);
+}
+
+.desktop-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Image interactions */
+.intro__image-wrap img,
+.service-card__image img,
+.plot__image img,
+.people__image img,
+.hero__image,
+.feature > img {
+  transition:
+    transform 1s var(--hsb-ease),
+    filter .6s ease;
+}
+
+.intro__image-wrap:hover img,
+.service-card:hover .service-card__image img {
+  transform: scale(1.055);
+}
+
+/* Service cards */
+.service-card {
+  transition:
+    transform .4s var(--hsb-ease),
+    box-shadow .4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 24px 48px rgba(29,41,36,.13);
+}
+
+.service-card__icon {
+  transition:
+    transform .35s var(--hsb-ease),
+    background .3s ease;
+}
+
+.service-card:hover .service-card__icon {
+  transform: rotate(-8deg) scale(1.08);
+  background: #e5d2ad;
+}
+
+/* Team cards */
+.team-member {
+  transition:
+    transform .45s var(--hsb-ease),
+    box-shadow .45s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 24px 45px rgba(29,41,36,.14);
+}
+
+.team-member__photo img {
+  transition:
+    transform .8s var(--hsb-ease),
+    filter .5s ease;
+}
+
+.team-member:hover .team-member__photo img {
+  transform: scale(1.075);
+}
+
+/* Plot planner */
+.planner-section .sheetlet {
+  transition:
+    transform .4s var(--hsb-ease),
+    box-shadow .4s ease;
+}
+
+.planner-section .sheetlet:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 65px rgba(30,38,31,.13);
+}
+
+.planner-section .seg__b,
+.planner-section .slip {
+  transition:
+    transform .3s var(--hsb-ease),
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.planner-section .seg__b:hover,
+.planner-section .slip:hover {
+  box-shadow: 0 10px 22px rgba(29,41,36,.12);
+}
+
+/* Contact form */
+.requirement-card {
+  transition:
+    transform .4s var(--hsb-ease),
+    box-shadow .4s ease;
+}
+
+.requirement-card:hover {
+  box-shadow: 0 25px 70px rgba(0,0,0,.16);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  background: #fffefa;
+}
+
+/* Footer links */
+.site-footer a {
+  transition:
+    color .25s ease,
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.site-footer__top:hover {
+  transform: translateY(-3px);
+}
+
+/* Scroll reveal: supported modern browsers */
+@supports (animation-timeline: view()) {
+  .intro__grid,
+  .services .section-heading,
+  .service-grid,
+  .journey .section-heading,
+  .journey-grid,
+  .team-members__heading,
+  .team-members__grid,
+  .contact__grid {
+    animation: hsb-scroll-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  @keyframes hsb-scroll-reveal {
+    from {
+      opacity: .35;
+      transform: translateY(35px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Mobile refinement */
+@media (max-width: 760px) {
+  .hsb-site .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .team-member:hover,
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hsb-site *,
+  .hsb-site *::before,
+  .hsb-site *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
